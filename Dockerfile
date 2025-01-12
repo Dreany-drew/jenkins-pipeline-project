@@ -2,11 +2,11 @@
 FROM fedora
 
 # Labels for metadata
-LABEL description="This is my first Dockerfile"
+LABEL description="Dockerfile to containerize the slick app"
 LABEL maintainer="Andre DIBI"
 
 # Update and install Apache HTTP Server
-RUN dnf update -y && dnf install -y httpd
+RUN apt update -y && apt install -y httpd
 
 # Copy the index file to the container
 COPY ./Jenkins-project /var/www/html/
