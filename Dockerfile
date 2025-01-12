@@ -1,18 +1,18 @@
-# Base image
-FROM fedora
-
-# Labels for metadata
-LABEL description="Dockerfile to containerize the slick app"
-LABEL maintainer="Andre DIBI"
-
-# Update and install Apache HTTP Server
-RUN apt update -y && apt install -y httpd
-
-# Copy the index file to the container
-COPY ./Jenkins-project /var/www/html/
-
-# Expose port 80 for web traffic
+# Description
+LABEL description="Dockerfile to containerize the slick application"
+ 
+# Update all packages
+RUN apt-get -y update
+ 
+# Install Apache on Ubuntu
+RUN apt-get install apache2 -y
+ 
+# Copy web app from local to the container
+COPY ./webapp/ /var/www/html
+ 
+# Port on which the app should listen
 EXPOSE 80
-
-# Start the Apache HTTP server in the foreground
-ENTRYPOINT ["/usr/sbin/httpd", "-D", "FOREGROUND"]
+ 
+# Start Apache2 and make it run in the foreground
+ENTRYPOINT ["/usr/sbin/apache2ctl", "-D", "FOREGROUND"]
+ 
