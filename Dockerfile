@@ -1,9 +1,12 @@
 #Base image
-FROM ubuntu:20.04
+FROM ubuntu:22.04
 
 # Description
 LABEL description="Dockerfile to containerize the slick application"
  
+# Set environment variable to avoid interactive prompts
+ENV DEBIAN_FRONTEND=noninteractive
+
 # Update all packages
 RUN apt-get -y update
  
