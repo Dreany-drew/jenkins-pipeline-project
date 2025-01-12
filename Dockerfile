@@ -1,3 +1,6 @@
+#Base image
+FROM ubuntu:20.04
+
 # Description
 LABEL description="Dockerfile to containerize the slick application"
  
